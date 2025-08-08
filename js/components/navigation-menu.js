@@ -5,24 +5,14 @@ class NavigationMenu extends HTMLElement {
     }
 
     connectedCallback() {
-        // Get the current path and split it into segments
-        const currentPath = window.location.pathname;
-        const pathSegments = currentPath.split('/').filter(Boolean);
-        
-        // Calculate the base path
-        let basePath = '/';
-        
-        // If this is a GitHub Pages site, include the repository name in the base path
+        // Determine the site root for absolute links
+        let siteRoot = '/';
         if (window.location.hostname.endsWith('github.io')) {
-            const repoName = pathSegments[0];
-            basePath = `/${repoName}/`;
+            // For GitHub Pages, include the repo name
+            const repoName = window.location.pathname.split('/').filter(Boolean)[0];
+            siteRoot = `/${repoName}/`;
         }
-
-        // Add relative path for subdirectories
-        if (pathSegments.length > 1) {
-            const subDirCount = pathSegments.length - 1;
-            basePath = '../'.repeat(subDirCount) + (basePath !== '/' ? '' : '');
-        }
+        // For file:// protocol, just use '/'
 
         this.shadowRoot.innerHTML = `
             <style>
@@ -94,12 +84,12 @@ class NavigationMenu extends HTMLElement {
             </style>
             <nav>
                 <div class="nav-content">
-                    <a href="${basePath}index.html" class="logo">CR</a>
+                    <a href="${siteRoot}index.html" class="logo">CR</a>
                     <ul class="nav-links">
-                        <li><a href="${basePath}index.html" class="${this.isActive('index.html')}">Profile</a></li>
-                        <li><a href="${basePath}repositories.html" class="${this.isActive('repositories.html')}">Repositories</a></li>
-                        <li><a href="${basePath}articles.html" class="${this.isActive('articles')}">Articles</a></li>
-                        <li><a href="${basePath}about.html" class="${this.isActive('about.html')}">About</a></li>
+                        <li><a href="${siteRoot}index.html" class="${this.isActive('index.html')}">Profile</a></li>
+                        <li><a href="${siteRoot}repositories.html" class="${this.isActive('repositories.html')}">Repositories</a></li>
+                        <li><a href="${siteRoot}articles.html" class="${this.isActive('articles')}">Articles</a></li>
+                        <li><a href="${siteRoot}about.html" class="${this.isActive('about.html')}">About</a></li>
                     </ul>
                 </div>
             </nav>
@@ -108,24 +98,20 @@ class NavigationMenu extends HTMLElement {
 
     isActive(path) {
         const currentPath = window.location.pathname;
-        const pathSegments = currentPath.split('/').filter(Boolean);
-        
-        // For GitHub Pages, ignore the repository name in the path
-        const relevantSegments = window.location.hostname.endsWith('github.io') 
-            ? pathSegments.slice(1) 
-            : pathSegments;
-        
+        let pathSegments = currentPath.split('/').filter(Boolean);
+        // For GitHub Pages, ignore the repo name in the path
+        if (window.location.hostname.endsWith('github.io')) {
+            pathSegments = pathSegments.slice(1);
+        }
         // Handle articles directory separately
-        if (path === 'articles' && (relevantSegments.includes('articles') || currentPath.endsWith('articles.html'))) {
+        if (path === 'articles' && (pathSegments.includes('articles') || currentPath.endsWith('articles.html'))) {
             return 'active';
         }
-        
         // For other pages
-        const currentPage = relevantSegments[relevantSegments.length - 1] || '';
+        const currentPage = pathSegments[pathSegments.length - 1] || '';
         if (currentPage === path || (!currentPage && path === 'index.html')) {
             return 'active';
         }
-        
         return '';
     }
 }
