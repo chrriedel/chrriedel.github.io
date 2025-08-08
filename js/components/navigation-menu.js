@@ -5,14 +5,33 @@ class NavigationMenu extends HTMLElement {
     }
 
     connectedCallback() {
-        // Determine the site root for absolute links
-        let siteRoot = '/';
-        if (window.location.hostname.endsWith('github.io')) {
-            // For GitHub Pages, include the repo name
-            const repoName = window.location.pathname.split('/').filter(Boolean)[0];
-            siteRoot = `/${repoName}/`;
+        // Calculate base URL by removing the current page from the path
+        const currentPath = window.location.pathname;
+        const pathSegments = currentPath.split('/');
+        
+        // Remove the HTML file from the path if it exists
+        if (pathSegments[pathSegments.length - 1].endsWith('.html')) {
+            pathSegments.pop();
         }
-        // For file:// protocol, just use '/'
+        
+        // For articles directory, also remove 'articles'
+        if (pathSegments[pathSegments.length - 1] === 'articles') {
+            pathSegments.pop();
+        }
+        
+        // For GitHub Pages, keep the repo name in the path
+        let siteRoot = '';
+        if (window.location.hostname.endsWith('github.io')) {
+            siteRoot = pathSegments.slice(0, 2).join('/') + '/';
+        } else if (window.location.protocol === 'file:') {
+            // For file:// protocol, use the full path up to the repo root
+            const repoIndex = pathSegments.findIndex(segment => segment === 'chrriedel.github.io');
+            if (repoIndex !== -1) {
+                siteRoot = pathSegments.slice(0, repoIndex + 1).join('/') + '/';
+            }
+        } else {
+            siteRoot = '/';
+        }
 
         this.shadowRoot.innerHTML = `
             <style>
