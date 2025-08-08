@@ -134,6 +134,13 @@ const mockFirestore = () => {
 };
 mockFirestore.FieldValue = mockFieldValue;
 
+// Mock config for development environment variables
+window.config = {
+    github: {
+        token: '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' // You'll need to add your GitHub token here
+    }
+};
+
 window.firebase = {
     initializeApp: () => {},
     firestore: mockFirestore
