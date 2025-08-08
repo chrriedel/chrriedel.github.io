@@ -297,6 +297,32 @@ footer {
     line-height: 1.6;
 }
 
+.focus-areas {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.focus-areas li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.focus-areas li:before {
+    content: "•";
+    color: var(--secondary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.profile-section p {
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-content {
