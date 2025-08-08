@@ -1,12 +1,39 @@
 // Fetch GitHub Repositories
 async function fetchRepositories() {
+    console.log('Fetching repositories...');
     try {
-        const response = await fetch('https://api.github.com/users/chrriedel/repos');
+        const headers = new Headers();
+        // Add authorization if token is available
+        if (window.config?.github?.token) {
+            headers.append('Authorization', `token ${window.config.github.token}`);
+        }
+        headers.append('Accept', 'application/vnd.github.v3+json');
+
+        const response = await fetch('https://api.github.com/users/chrriedel/repos', {
+            headers: headers
+        });
+        
+        if (!response.ok) {
+            if (response.status === 403) {
+                console.log('Rate limit info:', response.headers.get('X-RateLimit-Limit'), 
+                    response.headers.get('X-RateLimit-Remaining'),
+                    response.headers.get('X-RateLimit-Reset'));
+                throw new Error('GitHub API rate limit exceeded. Please add a GitHub token to continue.');
+            }
+            throw new Error(`GitHub API responded with status: ${response.status}`);
+        }
+        
         const repos = await response.json();
+        console.log('Repositories fetched:', repos);
         displayRepositories(repos);
     } catch (error) {
         console.error('Error fetching repositories:', error);
-        document.getElementById('repos-container').innerHTML = '<p>Error loading repositories</p>';
+        const container = document.getElementById('repos-container');
+        if (container) {
+            container.innerHTML = `<p>Error loading repositories: ${error.message}</p>`;
+        } else {
+            console.error('repos-container element not found');
+        }
     }
 }
 
@@ -295,8 +322,13 @@ class CommentSystem {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('repos-container')) {
+    console.log('DOM Content Loaded');
+    const reposContainer = document.getElementById('repos-container');
+    if (reposContainer) {
+        console.log('Found repos-container, fetching repositories...');
         fetchRepositories();
+    } else {
+        console.log('repos-container not found in the page');
     }
     
     new CommentSystem();
