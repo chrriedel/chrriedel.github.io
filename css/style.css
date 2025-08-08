@@ -48,6 +48,14 @@ header {
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
+    border: 2px solid var(--white);
+    padding: 0.2rem 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
 }
 
 .nav-links {
