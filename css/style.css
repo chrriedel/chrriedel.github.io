@@ -195,6 +195,108 @@ footer {
     margin-top: 2rem;
 }
 
+/* Profile Page Styles */
+.profile {
+    padding: 4rem 0;
+}
+
+.profile-header {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    align-items: center;
+}
+
+.profile-image {
+    flex-shrink: 0;
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--secondary-color);
+}
+
+.profile-intro {
+    flex-grow: 1;
+}
+
+.profile-intro .title {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    margin: 0.5rem 0 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.social-link:hover {
+    background-color: var(--secondary-color);
+}
+
+.profile-section {
+    margin-bottom: 3rem;
+}
+
+.profile-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-category li {
+    padding: 0.3rem 0;
+}
+
+.experience-item {
+    margin-bottom: 1.5rem;
+}
+
+.experience-item h3 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.experience-details {
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-content {
@@ -208,5 +310,14 @@ footer {
     
     .repos-grid {
         grid-template-columns: 1fr;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
     }
 }
