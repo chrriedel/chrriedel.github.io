@@ -3,55 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Christof Riedel - Portfolio</title>
+    <title>Professional Profile - Christof Riedel</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <nav>
-            <div class="nav-content">
-                <a href="index.html" class="logo">CR</a>
-                <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
-                    <li><a href="profile.html">Profile</a></li>
-                    <li><a href="about.html">About</a></li>
-                </ul>
-            </div>
-        </nav>
+        <navigation-menu></navigation-menu>
     </header>
 
     <main>
-        <section class="hero">
+        <section class="profile">
             <div class="container">
-                <h1>Christof Riedel</h1>
-                <p class="subtitle">Power Platform Architect</p>
-            </div>
-        </section>
+                <div class="profile-header">
+                    <div class="profile-image">
+                        <img src="images/profile.jpg" alt="Christof Riedel" class="profile-pic">
+                    </div>
+                    <div class="profile-intro">
+                        <h1>Christof Riedel</h1>
+                        <p class="title">Power Platform Architect</p>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/christof-riedel/" target="_blank" rel="noopener" class="social-link">
+                                <i class="fab fa-linkedin"></i> LinkedIn Profile
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-        <section class="repositories">
-            <div class="container">
-                <h2>My Repositories</h2>
-                <div id="repos-container" class="repos-grid"></div>
-            </div>
-        </section>
+                <div class="profile-content">
+                    <section class="profile-section">
+                        <h2><i class="fas fa-user-tie"></i> Professional Summary</h2>
+                        <p>Experienced Power Platform Architect specializing in Microsoft technologies and enterprise solutions. Expert in designing and implementing complex business solutions using the Power Platform ecosystem. Passionate about digital transformation, solution architecture, and creating efficient, scalable applications that drive business value.</p>
+                    </section>
 
-        <section class="comments">
-            <div class="container">
-                <h2>Leave a Comment</h2>
-                <form id="comment-form">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit">Send Message</button>
-                </form>
-                <div id="comments-container"></div>
+                    <section class="profile-section">
+                        <h2><i class="fas fa-code"></i> Core Technical Skills</h2>
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h3>Power Platform Expertise</h3>
+                                <ul>
+                                    <li>Power Apps Development</li>
+                                    <li>Power Automate Workflows</li>
+                                    <li>Dataverse / Power BI</li>
+                                    <li>Custom Connectors</li>
+                                </ul>
+                            </div>
+                            <div class="skill-category">
+                                <h3>Enterprise Solutions</h3>
+                                <ul>
+                                    <li>Solution Architecture</li>
+                                    <li>Dynamics 365 Integration</li>
+                                    <li>Azure Services</li>
+                                    <li>DevOps / ALM</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="profile-section">
+                        <h2><i class="fas fa-briefcase"></i> Professional Focus</h2>
+                        <div class="experience-item">
+                            <h3>Enterprise Solutions Development</h3>
+                            <ul class="focus-areas">
+                                <li>Microsoft Power Platform customization and development</li>
+                                <li>Full-stack web application development using .NET Core and React</li>
+                                <li>Cloud-native solutions using Azure services</li>
+                                <li>DevOps implementation and CI/CD pipeline optimization</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="profile-section">
+                        <h2><i class="fas fa-chart-line"></i> Professional Development</h2>
+                        <div class="experience-item">
+                            <p>Continuously expanding expertise in modern development practices, cloud architecture, and emerging technologies. Active participant in developer communities and professional development initiatives.</p>
+                        </div>
+                    </section>
+                </div>
             </div>
         </section>
     </main>
@@ -62,6 +90,7 @@
         </div>
     </footer>
 
+    <script src="js/components/navigation-menu.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>

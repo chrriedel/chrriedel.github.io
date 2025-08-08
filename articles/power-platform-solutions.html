@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Power Platform Solutions - Christof Riedel</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <navigation-menu></navigation-menu>
+    </header>
+
+    <main>
+        <article class="article-full">
+            <div class="container">
+                <header class="article-header">
+                    <h1>Understanding Power Platform Solutions</h1>
+                    <div class="article-meta">
+                        <span class="article-date">August 8, 2025</span>
+                        <span class="article-author">by Christof Riedel</span>
+                    </div>
+                </header>
+
+                <div class="article-content">
+                    <section>
+                        <h2>Introduction</h2>
+                        <p>Power Platform solutions are essential for managing and deploying customizations across different environments. In this article, we'll explore the key concepts, best practices, and enterprise-level implementation strategies.</p>
+                    </section>
+
+                    <!-- Add more sections as needed -->
+                </div>
+
+                <section class="comments">
+                    <div class="container">
+                        <h2>Discussion</h2>
+                        <form id="comment-form">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit">Send Message</button>
+                        </form>
+                        <div id="comments-container" class="comments-list"></div>
+                        <template id="comment-template">
+                            <div class="comment">
+                                <div class="comment-header">
+                                    <div class="comment-header-left">
+                                        <strong class="comment-author"></strong>
+                                        <div class="solution-badge" style="display: none">
+                                            <i class="fas fa-check-circle"></i> Solution
+                                        </div>
+                                    </div>
+                                    <span class="comment-date"></span>
+                                </div>
+                                <p class="comment-message"></p>
+                                <div class="comment-actions">
+                                    <button class="upvote-btn">
+                                        <i class="fas fa-thumbs-up"></i>
+                                        <span class="upvote-count">0</span>
+                                    </button>
+                                    <button class="reply-btn" style="display: none">
+                                        <i class="fas fa-reply"></i> Reply
+                                    </button>
+                                    <button class="mark-answer-btn" style="display: none">
+                                        <i class="fas fa-check"></i> Mark as Solution
+                                    </button>
+                                </div>
+                                <div class="reply-form" style="display: none;">
+                                    <form class="comment-reply-form">
+                                        <div class="form-group">
+                                            <input type="text" class="reply-name" placeholder="Your Name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="email" class="reply-email" placeholder="Your Email" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="reply-message" placeholder="Your Reply" required></textarea>
+                                        </div>
+                                        <button type="submit">Send Reply</button>
+                                    </form>
+                                </div>
+                                <div class="replies"></div>
+                            </div>
+                        </template>
+                    </div>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Christof Riedel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mock Firebase for development -->
+    <script src="../js/mock-firebase.js"></script>
+    
+    <!-- Components -->
+    <script src="../js/components/navigation-menu.js"></script>
+    
+    <!-- Your scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html>
