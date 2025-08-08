@@ -1,3 +1,3 @@
 # chrriedel.github.io
 
-# '#communiteyRocks
+# communiteyRocks
