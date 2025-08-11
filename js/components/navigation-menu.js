@@ -107,7 +107,6 @@ class NavigationMenu extends HTMLElement {
                     <ul class="nav-links">
                         <li><a href="${siteRoot}index.html" class="${this.isActive('index.html')}">Profile</a></li>
                         <li><a href="${siteRoot}repositories.html" class="${this.isActive('repositories.html')}">Repositories</a></li>
-                        <li><a href="${siteRoot}articles.html" class="${this.isActive('articles')}">Articles</a></li>
                         <li><a href="${siteRoot}about.html" class="${this.isActive('about.html')}">About</a></li>
                     </ul>
                 </div>
